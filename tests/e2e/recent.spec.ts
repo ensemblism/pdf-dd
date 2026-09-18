@@ -251,23 +251,28 @@ test('Git typed paths, the system picker and dropped files all record the return
     '/pdf-dd/api/git/pick',
     '/pdf-dd/api/git/drop',
   ]);
-  const buttons = await page.locator('.source-icon-button').evaluateAll((elements) =>
-    elements.map((el) => {
-      const rect = el.getBoundingClientRect(),
-        css = getComputedStyle(el);
-      return {
-        width: rect.width,
-        height: rect.height,
-        radius: css.borderRadius,
-        color: css.color,
-        background: css.backgroundColor,
-        border: css.border,
-      };
-    }),
-  );
-  expect(buttons[0]).toEqual(buttons[1]);
-  expect(buttons[0].width).toBe(36);
-  expect(buttons[0].height).toBe(36);
+  // Compare both buttons at rest, after the picker's hover transition has finished.
+  await page.mouse.move(0, 0);
+  await expect(async () => {
+    const buttons = await page.locator('.source-icon-button').evaluateAll((elements) =>
+      elements.map((el) => {
+        const rect = el.getBoundingClientRect(),
+          css = getComputedStyle(el);
+        return {
+          width: rect.width,
+          height: rect.height,
+          radius: css.borderRadius,
+          color: css.color,
+          background: css.backgroundColor,
+          border: css.border,
+        };
+      }),
+    );
+    expect(buttons).toHaveLength(2);
+    expect(buttons[0]).toEqual(buttons[1]);
+    expect(buttons[0].width).toBe(36);
+    expect(buttons[0].height).toBe(36);
+  }).toPass({ timeout: 5000 });
   await page.getByRole('button', { name: 'Recent paths', exact: true }).click();
   await expect(entries(page)).toHaveCount(1);
   await expect(entries(page).first()).toHaveAttribute('title', path);
