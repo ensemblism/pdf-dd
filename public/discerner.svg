@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <title>PDF Diff Discerner — two forms, one circle</title>
+  <path d="M25 4a20 20 0 0 1 0 40c11-1 12-12 1-19S15 7 25 4Z" fill="#82318e"/>
+  <path d="M21 4a20 20 0 0 0 0 40c10-3 10-11 0-18S11 8 21 4Z" fill="#d9c3eb"/>
+  <path d="M22 6c-10 6-7 14 1 19s10 12 1 17" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

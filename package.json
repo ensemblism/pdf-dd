@@ -1,0 +1,63 @@
+{
+  "name": "pdf-dd",
+  "version": "0.1.0",
+  "description": "PDF Diff Discerner — private PDF comparison with arXiv and Git history",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "bin": {
+    "pdf-dd": "dist/local/server/cli.js"
+  },
+  "files": [
+    "dist/local",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:local && npm run build:web",
+    "check": "tsc -p config/tsconfig.json --noEmit && tsc -p config/tsconfig.node.json --noEmit",
+    "start": "node dist/local/server/cli.js",
+    "test": "vitest run --config config/vitest.config.ts",
+    "test:e2e": "playwright test --config config/playwright.config.ts",
+    "format:check": "prettier --config config/.prettierrc.json --ignore-path .gitignore --ignore-path config/.prettierignore --check src tests config .github *.json index.html README.md",
+    "prepack": "npm run build:local",
+    "build:web": "vite build --config config/vite.config.ts --mode web",
+    "build:local": "tsc -p config/tsconfig.node.json && vite build --config config/vite.config.ts --mode app-local",
+    "test:package": "node tests/package-smoke.ts"
+  },
+  "dependencies": {
+    "open": "11.0.4"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
+    "diff": "9.0.0",
+    "pdf-lib": "1.17.1",
+    "pdfjs-dist": "6.3.289",
+    "prettier": "^3.9.7",
+    "typescript": "7.0.2",
+    "vite": "8.3.0",
+    "vitest": "^4.0.0"
+  },
+  "keywords": [
+    "pdf",
+    "diff",
+    "arxiv",
+    "git",
+    "local-first"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "author": "Ensemblism",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ensemblism/pdf-dd.git"
+  },
+  "homepage": "https://ensemblism.github.io/pdf-dd/",
+  "bugs": {
+    "url": "https://github.com/ensemblism/pdf-dd/issues"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "../dist/local",
+    "rootDir": "../src",
+    "types": ["node"],
+    "declaration": false
+  },
+  "include": ["../src/server", "../src/shared"]
+}

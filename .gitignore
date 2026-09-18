@@ -1,0 +1,10 @@
+node_modules/
+dist/
+test-results/
+playwright-report/
+tmp/
+*.tgz
+.DS_Store
+comparison.png
+influence*.pdf
+docs/
