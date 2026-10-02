@@ -1,0 +1,2223 @@
+{
+  "description": "Fixed arXiv version PDFs; source ranges checked against PDF.js extraction. Unchanged prose must not be highlighted; changed controls must be covered. These diagnostic passages are not a document-wide accuracy score.",
+  "samples": [
+    {
+      "name": "transformer",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1706.03762v1",
+          "sha256": "0a9bff1be3575cf9fe26a4a3d3a9175bc791ecec90de8b9deba4cff75d2b9476"
+        },
+        {
+          "version": 7,
+          "url": "https://arxiv.org/pdf/1706.03762v7",
+          "sha256": "bdfaa68d8984f0dc02beaca527b76f207d99b666d31d1da728ee0728182df697"
+        }
+      ]
+    },
+    {
+      "name": "vae",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1312.6114v1",
+          "sha256": "1a320bb73327d1ccb5d8df2d290ade85f80a22e2131635b2d87b5df9b6994153"
+        },
+        {
+          "version": 11,
+          "url": "https://arxiv.org/pdf/1312.6114v11",
+          "sha256": "bdcb63b79ed88f64f8ee2d43a721930d01dde5441a4dba20ecaa2342b34e017c"
+        }
+      ]
+    },
+    {
+      "name": "adam",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1412.6980v1",
+          "sha256": "935a5a15616961aff21529d86a754570028843407adfe858f1d18584b84293a7"
+        },
+        {
+          "version": 9,
+          "url": "https://arxiv.org/pdf/1412.6980v9",
+          "sha256": "eab9c73ae2ceda884b94830bda99312254bac4806f6c9f045cbab90721ecda31"
+        }
+      ]
+    },
+    {
+      "name": "bert",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1810.04805v1",
+          "sha256": "58534a3c000cbcc60ed64e999a2d9ed839edc2d9894e4449e9d79e1118b5e5ba"
+        },
+        {
+          "version": 2,
+          "url": "https://arxiv.org/pdf/1810.04805v2",
+          "sha256": "5692a5514787a8c6727b4ff3b726a3385798bc68e12138d1d4af83947e2acf6e"
+        }
+      ]
+    },
+    {
+      "name": "vit",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/2010.11929v1",
+          "sha256": "d33feb34fcf7aea256439a7f487197dcbb896e31a9d86e30e37d252672c4da78"
+        },
+        {
+          "version": 2,
+          "url": "https://arxiv.org/pdf/2010.11929v2",
+          "sha256": "8ce7b83971a14508ca711a27c875c9b6914c4f6767cf3150fb1ca6c07aa056d6"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "paper": "transformer",
+      "label": "整体架构说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 75,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 75,
+            "offset": 93
+          },
+          "sha256": "eca65508756b60e48e3074aad5ade86ea7e3594176c18650d0fbff827416efa8"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 1,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 1,
+            "offset": 93
+          },
+          "sha256": "eca65508756b60e48e3074aad5ade86ea7e3594176c18650d0fbff827416efa8"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "前馈网络说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 4,
+            "item": 26,
+            "offset": 0
+          },
+          "end": {
+            "page": 4,
+            "item": 27,
+            "offset": 30
+          },
+          "sha256": "5ee9b6231ba4d36a4e14b8e2330a5c76548e26a3157876f021757245bba7c604"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 162,
+            "offset": 0
+          },
+          "end": {
+            "page": 4,
+            "item": 163,
+            "offset": 30
+          },
+          "sha256": "5ee9b6231ba4d36a4e14b8e2330a5c76548e26a3157876f021757245bba7c604"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "编码器到解码器的注意力说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 197,
+            "offset": 41
+          },
+          "end": {
+            "page": 3,
+            "item": 198,
+            "offset": 66
+          },
+          "sha256": "1f95a5208e4e54dd9f0a02169454c227780de1646e25304896a53b3c34764f51"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 140,
+            "offset": 41
+          },
+          "end": {
+            "page": 4,
+            "item": 141,
+            "offset": 66
+          },
+          "sha256": "1f95a5208e4e54dd9f0a02169454c227780de1646e25304896a53b3c34764f51"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "全局参数推断说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 1,
+            "offset": 67
+          },
+          "end": {
+            "page": 1,
+            "item": 2,
+            "offset": 80
+          },
+          "sha256": "10c11abcdedd30c0d3a7c743ace768c3dcb18ecf58013d038cb875dcb048e26a"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 55,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 56,
+            "offset": 21
+          },
+          "sha256": "10c11abcdedd30c0d3a7c743ace768c3dcb18ecf58013d038cb875dcb048e26a"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "自然过程说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 259,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 260,
+            "offset": 30
+          },
+          "sha256": "07692dc5a528dcd144dededc9cf73cd00b7adc9c39131a7548f0348cbf0cf024"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 309,
+            "offset": 29
+          },
+          "end": {
+            "page": 1,
+            "item": 309,
+            "offset": 69
+          },
+          "sha256": "07692dc5a528dcd144dededc9cf73cd00b7adc9c39131a7548f0348cbf0cf024"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "线性自动编码器关系",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 207,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 212,
+            "offset": 62
+          },
+          "sha256": "4728b2f0af26d97351ba82346df81f386cf40b198c93925ac88680fc3cfdf032"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 22,
+            "offset": 42
+          },
+          "end": {
+            "page": 5,
+            "item": 27,
+            "offset": 62
+          },
+          "sha256": "4728b2f0af26d97351ba82346df81f386cf40b198c93925ac88680fc3cfdf032"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "一阶梯度说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 74,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 78,
+            "offset": 4
+          },
+          "sha256": "736c20b20af3592e59d948226e80576dbf6f927ec1fd03619d9227239b764cc6"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 81,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 85,
+            "offset": 6
+          },
+          "sha256": "736c20b20af3592e59d948226e80576dbf6f927ec1fd03619d9227239b764cc6"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "两种方法的结合",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 84,
+            "offset": 33
+          },
+          "end": {
+            "page": 0,
+            "item": 85,
+            "offset": 22
+          },
+          "sha256": "63ea7d4013b0012799a1d0ea190c78127e4505627e7b5360a6fa78892135edb2"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 90,
+            "offset": 44
+          },
+          "end": {
+            "page": 0,
+            "item": 91,
+            "offset": 31
+          },
+          "sha256": "63ea7d4013b0012799a1d0ea190c78127e4505627e7b5360a6fa78892135edb2"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "超参数说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 40,
+            "offset": 55
+          },
+          "end": {
+            "page": 0,
+            "item": 41,
+            "offset": 61
+          },
+          "sha256": "dde168c6e0094d66cdf9730b3158573f9250df63684bfa75ceb0e8045b43b695"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 39,
+            "offset": 36
+          },
+          "end": {
+            "page": 0,
+            "item": 40,
+            "offset": 43
+          },
+          "sha256": "dde168c6e0094d66cdf9730b3158573f9250df63684bfa75ceb0e8045b43b695"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "单向模型限制",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 148,
+            "offset": 42
+          },
+          "end": {
+            "page": 0,
+            "item": 150,
+            "offset": 14
+          },
+          "sha256": "8af95b8e12f0d7372d6cc70f364a2f0af7b28d11656908d616f5467006c17b6f"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 125,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 127,
+            "offset": 14
+          },
+          "sha256": "8af95b8e12f0d7372d6cc70f364a2f0af7b28d11656908d616f5467006c17b6f"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "句子任务限制",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 156,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 157,
+            "offset": 11
+          },
+          "sha256": "a586768ad9a5309f530619f9599976bbbfc91d9bb2e2099c9b79febd3dab5561"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 132,
+            "offset": 43
+          },
+          "end": {
+            "page": 0,
+            "item": 133,
+            "offset": 51
+          },
+          "sha256": "a586768ad9a5309f530619f9599976bbbfc91d9bb2e2099c9b79febd3dab5561"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "句子关系说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 111,
+            "offset": 37
+          },
+          "end": {
+            "page": 0,
+            "item": 113,
+            "offset": 27
+          },
+          "sha256": "7739eeced8c5b05312e2cbda1ef877cfdfdb51b358276e476cc7a1e65e41fb45"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 86,
+            "offset": 21
+          },
+          "end": {
+            "page": 0,
+            "item": 88,
+            "offset": 12
+          },
+          "sha256": "7739eeced8c5b05312e2cbda1ef877cfdfdb51b358276e476cc7a1e65e41fb45"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "微调优化器说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 4,
+            "item": 426,
+            "offset": 30
+          },
+          "end": {
+            "page": 4,
+            "item": 427,
+            "offset": 6
+          },
+          "sha256": "dca5f73cca36edd062c0c8896c680c94a45d7bdc4fbf2806eba75b43f8fc13c5"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 121,
+            "offset": 53
+          },
+          "end": {
+            "page": 4,
+            "item": 122,
+            "offset": 30
+          },
+          "sha256": "dca5f73cca36edd062c0c8896c680c94a45d7bdc4fbf2806eba75b43f8fc13c5"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "规模实验说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 68,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 68,
+            "offset": 92
+          },
+          "sha256": "c2783021c934a1069c73097caed927bf78bb9a4fd92aff17da59c37ca7b0d4f8"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 9,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 9,
+            "offset": 92
+          },
+          "sha256": "c2783021c934a1069c73097caed927bf78bb9a4fd92aff17da59c37ca7b0d4f8"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "输入与位置嵌入说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 2,
+            "offset": 0
+          },
+          "end": {
+            "page": 3,
+            "item": 2,
+            "offset": 57
+          },
+          "sha256": "2107295cf6c8ca1b77b74a205109bc09f83b0ef396cb1d2cd0023d19d4495c39"
+        },
+        {
+          "start": {
+            "page": 3,
+            "item": 155,
+            "offset": 0
+          },
+          "end": {
+            "page": 3,
+            "item": 155,
+            "offset": 57
+          },
+          "sha256": "2107295cf6c8ca1b77b74a205109bc09f83b0ef396cb1d2cd0023d19d4495c39"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "新增版权说明",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 0,
+            "item": 0,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 0,
+            "offset": 39
+          },
+          "sha256": "8bd2fb43dc855c257f3061334b9cc2ba3ea9ee795f01179272a4e08c1cf88c48"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "邮箱域名修改",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 18,
+            "offset": 9
+          },
+          "end": {
+            "page": 0,
+            "item": 18,
+            "offset": 15
+          },
+          "sha256": "e8064c38dbd36d8c43090bdd1b7c2576c00aedff173f15c5584e355cc768a975"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 18,
+            "offset": 9
+          },
+          "end": {
+            "page": 0,
+            "item": 18,
+            "offset": 19
+          },
+          "sha256": "68f330c47ec6bd3cf996d3852e0e393336a71afdf6f87ee5be812166444711ce"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "新增无标签训练文本说明",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 0,
+            "item": 51,
+            "offset": 41
+          },
+          "end": {
+            "page": 0,
+            "item": 52,
+            "offset": 14
+          },
+          "sha256": "a8e5f609bf9571303e5a1307c8abe5c1b0788134ddee350ba7ce76e243a02f82"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "GLUE 分数 80.4 到 80.5",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 73,
+            "offset": 3
+          },
+          "end": {
+            "page": 0,
+            "item": 73,
+            "offset": 4
+          },
+          "sha256": "4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 68,
+            "offset": 3
+          },
+          "end": {
+            "page": 0,
+            "item": 68,
+            "offset": 4
+          },
+          "sha256": "ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "新增正则化条件",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 0,
+            "item": 100,
+            "offset": 52
+          },
+          "end": {
+            "page": 0,
+            "item": 100,
+            "offset": 81
+          },
+          "sha256": "13f0b825722da2d0d8ee823773d3c8c8f21550494e62013392bf6bdc9d210f27"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "引用移动前后的词元输出说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 117,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 118,
+            "offset": 18
+          },
+          "sha256": "179550ac91f8e96a37e6820b62795d01075df78be70a6e8158993d0d1de66844"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 90,
+            "offset": 6
+          },
+          "end": {
+            "page": 0,
+            "item": 91,
+            "offset": 25
+          },
+          "sha256": "179550ac91f8e96a37e6820b62795d01075df78be70a6e8158993d0d1de66844"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "断行与时态修改之间的未改词干",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 154,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 154,
+            "offset": 6
+          },
+          "sha256": "192f9a06d1dd2d2462393c24255c0a83db16b087e8a476ef6fc6322012f37c10"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 130,
+            "offset": 47
+          },
+          "end": {
+            "page": 0,
+            "item": 131,
+            "offset": 4
+          },
+          "sha256": "192f9a06d1dd2d2462393c24255c0a83db16b087e8a476ef6fc6322012f37c10"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "实际删除的时态后缀",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 154,
+            "offset": 6
+          },
+          "end": {
+            "page": 0,
+            "item": 154,
+            "offset": 8
+          },
+          "sha256": "9c1623f0d38e28e9594f2ef31a7ec909291c4fdb05a777dccd2e936a7f406011"
+        },
+        null
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "跨页正文不被页底脚注打断",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 102,
+            "offset": 60
+          },
+          "end": {
+            "page": 0,
+            "item": 102,
+            "offset": 97
+          },
+          "sha256": "afb3c6be27345610edef18797d1d9935d478c734e4baf7e9fb068e8ad84cd64f"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 1,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 1,
+            "offset": 37
+          },
+          "sha256": "afb3c6be27345610edef18797d1d9935d478c734e4baf7e9fb068e8ad84cd64f"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "实验页的标签平滑说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 146,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 146,
+            "offset": 53
+          },
+          "sha256": "96bd83dfeca6b445db21ddd7299b755d7d283fc2fbc3a34721d967c0b259d63f"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 209,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 209,
+            "offset": 53
+          },
+          "sha256": "96bd83dfeca6b445db21ddd7299b755d7d283fc2fbc3a34721d967c0b259d63f"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "实验页的翻译模型比较",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 167,
+            "offset": 1
+          },
+          "end": {
+            "page": 6,
+            "item": 167,
+            "offset": 95
+          },
+          "sha256": "487246e2f0e2a43a52abf8105289884bf4810e1485329e9de4d27aaa7a69e911"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 229,
+            "offset": 92
+          },
+          "end": {
+            "page": 7,
+            "item": 230,
+            "offset": 89
+          },
+          "sha256": "487246e2f0e2a43a52abf8105289884bf4810e1485329e9de4d27aaa7a69e911"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "实验页的训练成本说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 191,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 191,
+            "offset": 100
+          },
+          "sha256": "f222e216abf07bd00fa3fb06c213de0a6956b4056933753d992ccb032994f9f6"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 252,
+            "offset": 25
+          },
+          "end": {
+            "page": 7,
+            "item": 253,
+            "offset": 94
+          },
+          "sha256": "f222e216abf07bd00fa3fb06c213de0a6956b4056933753d992ccb032994f9f6"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "MAP 段落的似然梯度说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 267,
+            "offset": 28
+          },
+          "end": {
+            "page": 6,
+            "item": 267,
+            "offset": 69
+          },
+          "sha256": "5bb4f349d50f46a54b894b95048a340648ddd3127957c1b0f6962eca2bdcbdb4"
+        },
+        {
+          "start": {
+            "page": 6,
+            "item": 339,
+            "offset": 54
+          },
+          "end": {
+            "page": 6,
+            "item": 339,
+            "offset": 95
+          },
+          "sha256": "5bb4f349d50f46a54b894b95048a340648ddd3127957c1b0f6962eca2bdcbdb4"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "公式修改后的初始化说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 2,
+            "item": 551,
+            "offset": 3
+          },
+          "end": {
+            "page": 2,
+            "item": 551,
+            "offset": 100
+          },
+          "sha256": "f536a91d1e13102fe80a5609343a846a9889ccd216fdd22fdae46e48fa23ab7d"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 540,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 540,
+            "offset": 97
+          },
+          "sha256": "f536a91d1e13102fe80a5609343a846a9889ccd216fdd22fdae46e48fa23ab7d"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "VAE 实验的隐藏层结构",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 152,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 152,
+            "offset": 96
+          },
+          "sha256": "2eccbd938f82ae7bd897a7196c7f0476197a0b8793b71391209332157dffb8ef"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 74,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 74,
+            "offset": 96
+          },
+          "sha256": "2eccbd938f82ae7bd897a7196c7f0476197a0b8793b71391209332157dffb8ef"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "稀疏特征的收敛说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 4,
+            "item": 373,
+            "offset": 16
+          },
+          "end": {
+            "page": 4,
+            "item": 373,
+            "offset": 98
+          },
+          "sha256": "7e9f98f9f429da56a3d661aae6cf50de113d956d9435c4cccb6658aa2b2504f6"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 71,
+            "offset": 17
+          },
+          "end": {
+            "page": 5,
+            "item": 71,
+            "offset": 99
+          },
+          "sha256": "7e9f98f9f429da56a3d661aae6cf50de113d956d9435c4cccb6658aa2b2504f6"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "自适应步长的未改说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 2,
+            "item": 162,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 162,
+            "offset": 96
+          },
+          "sha256": "dfbbe9bbb5f90d577f45f98da6f16fe17a06b572f8f514704a5f05626b5e7d33"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 163,
+            "offset": 47
+          },
+          "end": {
+            "page": 2,
+            "item": 164,
+            "offset": 48
+          },
+          "sha256": "dfbbe9bbb5f90d577f45f98da6f16fe17a06b572f8f514704a5f05626b5e7d33"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "移位后的监督迁移说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 169,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 169,
+            "offset": 49
+          },
+          "sha256": "b49d9a3ee42a421db639115b57d22201f9a1582d34591a739d3f53ee80fc8914"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 176,
+            "offset": 35
+          },
+          "end": {
+            "page": 2,
+            "item": 177,
+            "offset": 36
+          },
+          "sha256": "b49d9a3ee42a421db639115b57d22201f9a1582d34591a739d3f53ee80fc8914"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "移入附录的 GLUE 数据集说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 185,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 185,
+            "offset": 51
+          },
+          "sha256": "7b2717af0b0245e03e6c012e522c11852bc3c874f31f6a27a9a7dbdf6c7a386f"
+        },
+        {
+          "start": {
+            "page": 13,
+            "item": 155,
+            "offset": 0
+          },
+          "end": {
+            "page": 13,
+            "item": 155,
+            "offset": 51
+          },
+          "sha256": "7b2717af0b0245e03e6c012e522c11852bc3c874f31f6a27a9a7dbdf6c7a386f"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "移入附录的改善来源说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 153,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 153,
+            "offset": 49
+          },
+          "sha256": "824938abc4e30b782674ed143be71a6829f3b9e5b0d0283fc011d62f309aaccc"
+        },
+        {
+          "start": {
+            "page": 13,
+            "item": 85,
+            "offset": 0
+          },
+          "end": {
+            "page": 13,
+            "item": 85,
+            "offset": 49
+          },
+          "sha256": "824938abc4e30b782674ed143be71a6829f3b9e5b0d0283fc011d62f309aaccc"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "BERT 图注的输入嵌入说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 130,
+            "offset": 61
+          },
+          "end": {
+            "page": 3,
+            "item": 130,
+            "offset": 110
+          },
+          "sha256": "490ebaa158fa47d865a3cc87e8f38e473ee9ffe8d6f5e7889b1048fccb02c94e"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 130,
+            "offset": 62
+          },
+          "end": {
+            "page": 4,
+            "item": 131,
+            "offset": 4
+          },
+          "sha256": "490ebaa158fa47d865a3cc87e8f38e473ee9ffe8d6f5e7889b1048fccb02c94e"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "BERT 文献中的双向模型说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 2,
+            "item": 234,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 234,
+            "offset": 48
+          },
+          "sha256": "c89f49c53a2c26cfbccaa234c4f9b69ebc4006f3bda50e51b096e14630499cb2"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 320,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 320,
+            "offset": 48
+          },
+          "sha256": "c89f49c53a2c26cfbccaa234c4f9b69ebc4006f3bda50e51b096e14630499cb2"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "ImageNet-21k 预训练说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 116,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 116,
+            "offset": 95
+          },
+          "sha256": "0d54aad73e1640baff30a7a62c63191d7cf377f0fb96c2d2c9817fbcd457ab2c"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 420,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 420,
+            "offset": 95
+          },
+          "sha256": "0d54aad73e1640baff30a7a62c63191d7cf377f0fb96c2d2c9817fbcd457ab2c"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "预训练资源消耗说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 117,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 117,
+            "offset": 97
+          },
+          "sha256": "ba725118fe708c1d9ea0fc8411ea46202e8e3ba49aea640991797ee6e9d45c64"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 421,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 421,
+            "offset": 97
+          },
+          "sha256": "ba725118fe708c1d9ea0fc8411ea46202e8e3ba49aea640991797ee6e9d45c64"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "表格后的 Adam 迁移说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 4,
+            "item": 424,
+            "offset": 0
+          },
+          "end": {
+            "page": 4,
+            "item": 424,
+            "offset": 96
+          },
+          "sha256": "5022b75b3f17e31efae37f984cb7713324bb9de7f57bfc0e497144caae08cf05"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 119,
+            "offset": 22
+          },
+          "end": {
+            "page": 4,
+            "item": 120,
+            "offset": 21
+          },
+          "sha256": "5022b75b3f17e31efae37f984cb7713324bb9de7f57bfc0e497144caae08cf05"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "第 17 页跨图续句的嵌入说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 16,
+            "item": 205,
+            "offset": 0
+          },
+          "end": {
+            "page": 16,
+            "item": 205,
+            "offset": 99
+          },
+          "sha256": "86a9c5710693b94ad7d2a48d1ed51b5f30b34c9a987e95d3aa0b2daf55c4e232"
+        },
+        {
+          "start": {
+            "page": 16,
+            "item": 142,
+            "offset": 0
+          },
+          "end": {
+            "page": 16,
+            "item": 142,
+            "offset": 99
+          },
+          "sha256": "86a9c5710693b94ad7d2a48d1ed51b5f30b34c9a987e95d3aa0b2daf55c4e232"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "实验页的正则化参数说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 153,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 153,
+            "offset": 60
+          },
+          "sha256": "a21144fff72a80ec3c752ea5842f61d9d602ceb980556e79e25027593c93b328"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 456,
+            "offset": 90
+          },
+          "end": {
+            "page": 5,
+            "item": 457,
+            "offset": 55
+          },
+          "sha256": "a21144fff72a80ec3c752ea5842f61d9d602ceb980556e79e25027593c93b328"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "实验页的模型规模比较",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 161,
+            "offset": 59
+          },
+          "end": {
+            "page": 5,
+            "item": 162,
+            "offset": 56
+          },
+          "sha256": "3a410397002f2302c7fd183c0bd57634e599bba06804df55d22e4533e7a58522"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 465,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 465,
+            "offset": 94
+          },
+          "sha256": "3a410397002f2302c7fd183c0bd57634e599bba06804df55d22e4533e7a58522"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "重参数化标题的未改词干",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 417,
+            "offset": 18
+          },
+          "end": {
+            "page": 3,
+            "item": 417,
+            "offset": 34
+          },
+          "sha256": "6df199d8116ef7b67715efe115ee4008e8b9f76d2e8dc79035757a7ea0ce6e11"
+        },
+        {
+          "start": {
+            "page": 3,
+            "item": 570,
+            "offset": 6
+          },
+          "end": {
+            "page": 3,
+            "item": 570,
+            "offset": 22
+          },
+          "sha256": "6df199d8116ef7b67715efe115ee4008e8b9f76d2e8dc79035757a7ea0ce6e11"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "实验页真实修改的最优模型措辞",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 192,
+            "offset": 11
+          },
+          "end": {
+            "page": 6,
+            "item": 192,
+            "offset": 24
+          },
+          "sha256": "f153c0446c48008895d41f04cd6b463237413c72c620eabedd9749b2643b0208"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 254,
+            "offset": 4
+          },
+          "end": {
+            "page": 7,
+            "item": 254,
+            "offset": 15
+          },
+          "sha256": "020dae383219bf785518e1af41f1a8f5ed14db6eeb5fa8219d806846cb1129f2"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "重参数化标题真实删词和前缀",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 417,
+            "offset": 4
+          },
+          "end": {
+            "page": 3,
+            "item": 417,
+            "offset": 17
+          },
+          "sha256": "0badac3c6df445ad3aea62da1350683923aba37c685978afed96a515d12921a3"
+        },
+        {
+          "start": {
+            "page": 3,
+            "item": 570,
+            "offset": 4
+          },
+          "end": {
+            "page": 3,
+            "item": 570,
+            "offset": 6
+          },
+          "sha256": "3ac1ecbd2220c6757eb9f289fee88c4068c6791c5b0affef7644e77adfc97b45"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "偏差校正公式实际删除的内层常数",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 2,
+            "item": 540,
+            "offset": 1
+          },
+          "end": {
+            "page": 2,
+            "item": 540,
+            "offset": 2
+          },
+          "sha256": "6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b"
+        },
+        null
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "新增 SQuAD 表格的排除条件",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 6,
+            "item": 204,
+            "offset": 25
+          },
+          "end": {
+            "page": 6,
+            "item": 204,
+            "offset": 35
+          },
+          "sha256": "7b12be43febc6e18259dd77c004315b4143d570234e0f15acf5f9d7b79c371b5"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "实验页修改的正则化强度",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 162,
+            "offset": 57
+          },
+          "end": {
+            "page": 5,
+            "item": 162,
+            "offset": 62
+          },
+          "sha256": "22d5925ed64680ab5f3f6de713645a3d72cae7a9506b8a55a0d4fe950737711b"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 466,
+            "offset": 1
+          },
+          "end": {
+            "page": 5,
+            "item": 466,
+            "offset": 9
+          },
+          "sha256": "dff22754ace5cbab4fbb2da37f8e9b377303c66d157e0b5262182108604ed637"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "第 15 页训练成本表格的实际数值修改",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 14,
+            "item": 251,
+            "offset": 0
+          },
+          "end": {
+            "page": 14,
+            "item": 251,
+            "offset": 3
+          },
+          "sha256": "3f9807cb9ae9fb6c30942af6139909d27753a5e03fe5a5c6e93b014f5b17366f"
+        },
+        {
+          "start": {
+            "page": 14,
+            "item": 250,
+            "offset": 0
+          },
+          "end": {
+            "page": 14,
+            "item": 250,
+            "offset": 2
+          },
+          "sha256": "02d20bbd7e394ad5999a4cebabac9619732c343a4cac99470c03e23ba2bdc2bc"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "多头注意力投影句的未改部分",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 74,
+            "offset": 39
+          },
+          "end": {
+            "page": 3,
+            "item": 74,
+            "offset": 67
+          },
+          "sha256": "6df07b84ba23e9e4907d687a82f2abdfc6b364cea3c81e2b1c78377935639af4"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 0,
+            "offset": 64
+          },
+          "end": {
+            "page": 4,
+            "item": 0,
+            "offset": 93
+          },
+          "sha256": "6df07b84ba23e9e4907d687a82f2abdfc6b364cea3c81e2b1c78377935639af4"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "以年份开始的跨页训练数据集说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 268,
+            "offset": 41
+          },
+          "end": {
+            "page": 5,
+            "item": 268,
+            "offset": 96
+          },
+          "sha256": "89a8b11d163447c2a2f839adddd097032c09ab5719b3f9d8afd61b7088d50698"
+        },
+        {
+          "start": {
+            "page": 6,
+            "item": 102,
+            "offset": 41
+          },
+          "end": {
+            "page": 6,
+            "item": 102,
+            "offset": 97
+          },
+          "sha256": "89a8b11d163447c2a2f839adddd097032c09ab5719b3f9d8afd61b7088d50698"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "伪代码中的梯度注释",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 155,
+            "offset": 1
+          },
+          "end": {
+            "page": 1,
+            "item": 155,
+            "offset": 54
+          },
+          "sha256": "c1964e9cf217e3bca52405823f44acf416faa623493c7dd333310c53b1c33ec3"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 184,
+            "offset": 1
+          },
+          "end": {
+            "page": 1,
+            "item": 184,
+            "offset": 54
+          },
+          "sha256": "c1964e9cf217e3bca52405823f44acf416faa623493c7dd333310c53b1c33ec3"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "伪代码中的初始参数要求",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 89,
+            "offset": 2
+          },
+          "end": {
+            "page": 1,
+            "item": 89,
+            "offset": 26
+          },
+          "sha256": "dc905ceb687338c60c53a19d4546a1db64e1723c9756eefa7c33113b6cba7caa"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 118,
+            "offset": 2
+          },
+          "end": {
+            "page": 1,
+            "item": 118,
+            "offset": 26
+          },
+          "sha256": "dc905ceb687338c60c53a19d4546a1db64e1723c9756eefa7c33113b6cba7caa"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "模型尺寸说明从分项改为行文的共有前缀",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 2,
+            "item": 204,
+            "offset": 2
+          },
+          "end": {
+            "page": 2,
+            "item": 204,
+            "offset": 36
+          },
+          "sha256": "70cad7921308a1a65cafc9f39368aabdc0c1d493dabd445f1698af30e76d85c6"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 270,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 270,
+            "offset": 34
+          },
+          "sha256": "70cad7921308a1a65cafc9f39368aabdc0c1d493dabd445f1698af30e76d85c6"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "侧栏插图旁的内部表示分析",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 86,
+            "offset": 72
+          },
+          "end": {
+            "page": 7,
+            "item": 86,
+            "offset": 95
+          },
+          "sha256": "157db1bddb3acc2e68ad10b9fa031775e81520e2555de917bba25ba863415feb"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 67,
+            "offset": 10
+          },
+          "end": {
+            "page": 7,
+            "item": 67,
+            "offset": 33
+          },
+          "sha256": "157db1bddb3acc2e68ad10b9fa031775e81520e2555de917bba25ba863415feb"
+        }
+      ]
+    },
+    {
+      "paper": "vit",
+      "label": "侧栏插图旁的位置编码说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 109,
+            "offset": 23
+          },
+          "end": {
+            "page": 7,
+            "item": 109,
+            "offset": 68
+          },
+          "sha256": "2f568f92d6986704705aaeba2634db8772c1a24dc0fbcb4f7dde0d3f8169d906"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 74,
+            "offset": 23
+          },
+          "end": {
+            "page": 7,
+            "item": 74,
+            "offset": 68
+          },
+          "sha256": "2f568f92d6986704705aaeba2634db8772c1a24dc0fbcb4f7dde0d3f8169d906"
+        }
+      ]
+    },
+    {
+      "paper": "transformer",
+      "label": "训练时长一句拆成两句的共有描述",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 12,
+            "offset": 60
+          },
+          "end": {
+            "page": 6,
+            "item": 12,
+            "offset": 97
+          },
+          "sha256": "eb913448f96d3bff15fc81cb42bafab156f29da8319fd7b4cdef723510ec0d5b"
+        },
+        {
+          "start": {
+            "page": 6,
+            "item": 115,
+            "offset": 60
+          },
+          "end": {
+            "page": 6,
+            "item": 115,
+            "offset": 97
+          },
+          "sha256": "eb913448f96d3bff15fc81cb42bafab156f29da8319fd7b4cdef723510ec0d5b"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "摘要共有的实现描述（重复短语）",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 34,
+            "offset": 46
+          },
+          "end": {
+            "page": 0,
+            "item": 34,
+            "offset": 74
+          },
+          "sha256": "c685cc8c69a5f56f5dd95233b93bca86755b04f53d6332bf68ce195782943e2d"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 35,
+            "offset": 21
+          },
+          "end": {
+            "page": 0,
+            "item": 35,
+            "offset": 49
+          },
+          "sha256": "c685cc8c69a5f56f5dd95233b93bca86755b04f53d6332bf68ce195782943e2d"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "adam",
+      "label": "摘要共有的低阶矩估计",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 35,
+            "offset": 9
+          },
+          "end": {
+            "page": 0,
+            "item": 35,
+            "offset": 50
+          },
+          "sha256": "c180e78b5a339e5329c16529b6adccaa58c6403f927ab190a0bbf1794d4ca90a"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 34,
+            "offset": 41
+          },
+          "end": {
+            "page": 0,
+            "item": 35,
+            "offset": 5
+          },
+          "sha256": "c180e78b5a339e5329c16529b6adccaa58c6403f927ab190a0bbf1794d4ca90a"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "摘要共有的内存需求",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 36,
+            "offset": 29
+          },
+          "end": {
+            "page": 0,
+            "item": 36,
+            "offset": 59
+          },
+          "sha256": "13f8d39e4164773cd9ae7dc101e773f675204e889cbab21e2fd6a44b2b820cca"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 36,
+            "offset": 0
+          },
+          "end": {
+            "page": 0,
+            "item": 36,
+            "offset": 30
+          },
+          "sha256": "13f8d39e4164773cd9ae7dc101e773f675204e889cbab21e2fd6a44b2b820cca"
+        }
+      ]
+    },
+    {
+      "paper": "adam",
+      "label": "引言共有的 Hinton 与 Graves 引用作者",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 68,
+            "offset": 39
+          },
+          "end": {
+            "page": 0,
+            "item": 68,
+            "offset": 81
+          },
+          "sha256": "a55c1af08a469b0afa450468a2ccf5980a9ad39fdbed7b97f6b9cf6e8f53ced7"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 75,
+            "offset": 23
+          },
+          "end": {
+            "page": 0,
+            "item": 75,
+            "offset": 64
+          },
+          "sha256": "a55c1af08a469b0afa450468a2ccf5980a9ad39fdbed7b97f6b9cf6e8f53ced7"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "相关工作共有的 Ando、Zhang 与 Blitzer 引用",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 98,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 98,
+            "offset": 42
+          },
+          "sha256": "e719c67e3af3fa44bf0d0c7efa9069af6e8a4569627b68a06f02beda90520981"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 70,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 70,
+            "offset": 42
+          },
+          "sha256": "e719c67e3af3fa44bf0d0c7efa9069af6e8a4569627b68a06f02beda90520981"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "相关工作共有的 Mikolov 与 Pennington 引用",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 109,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 110,
+            "offset": 37
+          },
+          "sha256": "0ccb41298abf255af5e75849713baf505357e506455324d73e482ecaf850ebd5"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 71,
+            "offset": 8
+          },
+          "end": {
+            "page": 1,
+            "item": 72,
+            "offset": 4
+          },
+          "sha256": "0ccb41298abf255af5e75849713baf505357e506455324d73e482ecaf850ebd5"
+        }
+      ]
+    },
+    {
+      "paper": "bert",
+      "label": "移入附录的 Stanford 情感数据集说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 260,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 260,
+            "offset": 36
+          },
+          "sha256": "3abed79a018caf240a7f42417b0447b41499fc218ba82eb25a94c79e50013197"
+        },
+        {
+          "start": {
+            "page": 14,
+            "item": 230,
+            "offset": 0
+          },
+          "end": {
+            "page": 14,
+            "item": 230,
+            "offset": 36
+          },
+          "sha256": "3abed79a018caf240a7f42417b0447b41499fc218ba82eb25a94c79e50013197"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "vit",
+      "label": "相关工作共有的 Radford 引用作者",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 8,
+            "item": 10,
+            "offset": 14
+          },
+          "end": {
+            "page": 8,
+            "item": 10,
+            "offset": 34
+          },
+          "sha256": "637cd6aea2fb11e09898de6b14262431b9a1ab92b4b72de2c92c25398a9c893c"
+        },
+        {
+          "start": {
+            "page": 8,
+            "item": 75,
+            "offset": 14
+          },
+          "end": {
+            "page": 8,
+            "item": 75,
+            "offset": 34
+          },
+          "sha256": "637cd6aea2fb11e09898de6b14262431b9a1ab92b4b72de2c92c25398a9c893c"
+        }
+      ]
+    },
+    {
+      "paper": "vae",
+      "label": "参考文献共有的 Technical Report CBLL",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 8,
+            "item": 68,
+            "offset": 0
+          },
+          "end": {
+            "page": 8,
+            "item": 68,
+            "offset": 21
+          },
+          "sha256": "526d3deac532c5e38a5ea4b2c55cfb96dd46709dcabb8aa38b536a50ffceacb8"
+        },
+        {
+          "start": {
+            "page": 8,
+            "item": 70,
+            "offset": 0
+          },
+          "end": {
+            "page": 8,
+            "item": 70,
+            "offset": 21
+          },
+          "sha256": "526d3deac532c5e38a5ea4b2c55cfb96dd46709dcabb8aa38b536a50ffceacb8"
+        }
+      ]
+    }
+  ]
+}

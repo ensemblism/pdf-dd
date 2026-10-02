@@ -6,6 +6,7 @@ export interface TextItem {
   y: number;
   width: number;
   height: number;
+  baseline?: [number, number];
 }
 export interface Page {
   width: number;
@@ -43,6 +44,7 @@ export interface Comparison {
   changes: Change[];
   anchors: Anchor[];
   pagePairs: [number | null, number | null][];
+  coarse?: boolean;
 }
 export interface Geometry {
   left: Record<number, Rect[]>;
@@ -53,6 +55,7 @@ export interface ExportInput {
   pages: [Page[], Page[]];
   comparison: Comparison;
   geometry: Geometry;
+  incomplete?: boolean;
 }
 
 export const colors = {

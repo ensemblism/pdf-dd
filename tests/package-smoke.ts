@@ -64,7 +64,7 @@ try {
   );
   assert.equal(
     runNpm(['exec', '--offline', '--no', '--', 'pdf-dd', '--version'], installed).trim(),
-    '0.1.0',
+    JSON.parse(await readFile('package.json', 'utf8')).version,
   );
   for (const args of [['--port', '-1'], ['--port', '70000'], ['only-one.pdf']])
     assert.notEqual(spawnSync(process.execPath, [cli, ...args]).status, 0);

@@ -1,0 +1,766 @@
+{
+  "samples": [
+    {
+      "name": "batchnorm",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1502.03167v1",
+          "sha256": "4591881ed6e7b3815eaa7c13cb8d8cc1c807ca5411150c11d11f718e6ba48949"
+        },
+        {
+          "version": 3,
+          "url": "https://arxiv.org/pdf/1502.03167v3",
+          "sha256": "bdc69e0b568f41d8d3181cc9077a461f58fcdd1c70c9f49efe60a05ee6109655"
+        }
+      ]
+    },
+    {
+      "name": "ddpm",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/2006.11239v1",
+          "sha256": "4bd69fcbb4a9e794d38424d187b91d7e958461f5eaaa14cf2a578a2b6aac71be"
+        },
+        {
+          "version": 2,
+          "url": "https://arxiv.org/pdf/2006.11239v2",
+          "sha256": "aee5e07a802e8dfd2a386374c94fd61d1d056cb7e1e0fec4f28e8120ff5d8505"
+        }
+      ]
+    },
+    {
+      "name": "word2vec",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1301.3781v1",
+          "sha256": "4ca4bc94797e57e8dd4843ec2b26811e56d60e2297c187c3591e21be6b08e509"
+        },
+        {
+          "version": 3,
+          "url": "https://arxiv.org/pdf/1301.3781v3",
+          "sha256": "a44d7e22d2005752271c9cc1929c6462d4c8270916b063977992a883e3a54362"
+        }
+      ]
+    },
+    {
+      "name": "seq2seq",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1409.3215v1",
+          "sha256": "ca63cbfdacb6788f426cc26cae14b5f670378c2cce53f38e57ef2ec9336e7348"
+        },
+        {
+          "version": 3,
+          "url": "https://arxiv.org/pdf/1409.3215v3",
+          "sha256": "5c74e1db863e2d61b869c9b0603494b34c41fb05db1a4fa7f9a83d5a42b7350f"
+        }
+      ]
+    },
+    {
+      "name": "vgg",
+      "files": [
+        {
+          "version": 1,
+          "url": "https://arxiv.org/pdf/1409.1556v1",
+          "sha256": "d4f387474090d9010962a26fa1a741362e9c7d67a01d589bef043112e8d2200c"
+        },
+        {
+          "version": 6,
+          "url": "https://arxiv.org/pdf/1409.1556v6",
+          "sha256": "83728f9efc21081792902b4c17a4657022d1e4a92ec81655c2427f4ef0755e50"
+        }
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "paper": "batchnorm",
+      "label": "双栏标题旁的共有分类说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 123,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 123,
+            "offset": 53
+          },
+          "sha256": "bf48814e8439835fa9dfca959751dc1ab7b92a329404261fa0c803226a266218"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 124,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 124,
+            "offset": 53
+          },
+          "sha256": "bf48814e8439835fa9dfca959751dc1ab7b92a329404261fa0c803226a266218"
+        }
+      ]
+    },
+    {
+      "paper": "batchnorm",
+      "label": "跨页参考文献的期刊信息",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 171,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 173,
+            "offset": 20
+          },
+          "sha256": "ee17274022208eaa31573c33f1d894823c0fa9372ba46a698af436564465ef71"
+        },
+        {
+          "start": {
+            "page": 8,
+            "item": 2,
+            "offset": 0
+          },
+          "end": {
+            "page": 8,
+            "item": 4,
+            "offset": 20
+          },
+          "sha256": "ee17274022208eaa31573c33f1d894823c0fa9372ba46a698af436564465ef71"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "batchnorm",
+      "label": "双栏结尾的共有展望",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 142,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 142,
+            "offset": 34
+          },
+          "sha256": "82fe6861575e03e41f566d77bd0faa6a4ccee130ebf4cb558bdb78d8deb67bb4"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 181,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 181,
+            "offset": 34
+          },
+          "sha256": "82fe6861575e03e41f566d77bd0faa6a4ccee130ebf4cb558bdb78d8deb67bb4"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "batchnorm",
+      "label": "新增参考文献前的共有作者",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 167,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 167,
+            "offset": 43
+          },
+          "sha256": "52ed3262b4ad8cf4cfff2ec9f3b98937df98efbc10d17bd7185df70181b2c0bf"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 206,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 206,
+            "offset": 43
+          },
+          "sha256": "52ed3262b4ad8cf4cfff2ec9f3b98937df98efbc10d17bd7185df70181b2c0bf"
+        }
+      ]
+    },
+    {
+      "paper": "ddpm",
+      "label": "共有 PixelSNAIL 标题",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 8,
+            "item": 57,
+            "offset": 68
+          },
+          "end": {
+            "page": 8,
+            "item": 58,
+            "offset": 21
+          },
+          "sha256": "a2b0c38a9bd13c816c10f26d11c7eaf55fc1db297da7d959ee63678a822ab825"
+        },
+        {
+          "start": {
+            "page": 8,
+            "item": 68,
+            "offset": 68
+          },
+          "end": {
+            "page": 8,
+            "item": 69,
+            "offset": 21
+          },
+          "sha256": "a2b0c38a9bd13c816c10f26d11c7eaf55fc1db297da7d959ee63678a822ab825"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "ddpm",
+      "label": "共有的对抗网络标题",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 8,
+            "item": 89,
+            "offset": 30
+          },
+          "end": {
+            "page": 8,
+            "item": 89,
+            "offset": 57
+          },
+          "sha256": "57db56600ab8d983175fce15d41ed720cf7667a543b005c9a7e5f3aee2935f52"
+        },
+        {
+          "start": {
+            "page": 9,
+            "item": 34,
+            "offset": 30
+          },
+          "end": {
+            "page": 9,
+            "item": 34,
+            "offset": 57
+          },
+          "sha256": "57db56600ab8d983175fce15d41ed720cf7667a543b005c9a7e5f3aee2935f52"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "ddpm",
+      "label": "共享的附录代码说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 13,
+            "item": 14,
+            "offset": 17
+          },
+          "end": {
+            "page": 13,
+            "item": 14,
+            "offset": 68
+          },
+          "sha256": "a44ad1e92c7b4ca07ca82f4c0a49c87b07b64bc4bc95c252e6eaa75434f04fba"
+        },
+        {
+          "start": {
+            "page": 14,
+            "item": 13,
+            "offset": 78
+          },
+          "end": {
+            "page": 14,
+            "item": 14,
+            "offset": 26
+          },
+          "sha256": "a44ad1e92c7b4ca07ca82f4c0a49c87b07b64bc4bc95c252e6eaa75434f04fba"
+        }
+      ]
+    },
+    {
+      "paper": "ddpm",
+      "label": "第八页插值图注",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 2,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 2,
+            "offset": 74
+          },
+          "sha256": "4598360cc5e04e563654c44647bf189bbd0fb42b71203204deda2e228b1edc93"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 2,
+            "offset": 0
+          },
+          "end": {
+            "page": 7,
+            "item": 2,
+            "offset": 74
+          },
+          "sha256": "4598360cc5e04e563654c44647bf189bbd0fb42b71203204deda2e228b1edc93"
+        }
+      ]
+    },
+    {
+      "paper": "word2vec",
+      "label": "共有的语义句法测试图注",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 2,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 2,
+            "offset": 71
+          },
+          "sha256": "8fc1f25bb2c6453f7ff58698803addbe2750d828d3a32e84576f101f2f01bd05"
+        },
+        {
+          "start": {
+            "page": 6,
+            "item": 2,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 2,
+            "offset": 71
+          },
+          "sha256": "8fc1f25bb2c6453f7ff58698803addbe2750d828d3a32e84576f101f2f01bd05"
+        }
+      ]
+    },
+    {
+      "paper": "word2vec",
+      "label": "共有的词向量训练说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 235,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 235,
+            "offset": 75
+          },
+          "sha256": "1b3cc270bb5776f1829d4e5bb8c04347598c83a5678d6c6bfa6a500c7dbba6fa"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 186,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 186,
+            "offset": 75
+          },
+          "sha256": "1b3cc270bb5776f1829d4e5bb8c04347598c83a5678d6c6bfa6a500c7dbba6fa"
+        }
+      ]
+    },
+    {
+      "paper": "word2vec",
+      "label": "共有的表示质量评估说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 25,
+            "offset": 0
+          },
+          "end": {
+            "page": 1,
+            "item": 25,
+            "offset": 76
+          },
+          "sha256": "6028ab57ffbef55f2f7c6e1d7057069a7da64733dc457f34e90cad0ca2dc5553"
+        },
+        {
+          "start": {
+            "page": 1,
+            "item": 2,
+            "offset": 25
+          },
+          "end": {
+            "page": 1,
+            "item": 3,
+            "offset": 5
+          },
+          "sha256": "6028ab57ffbef55f2f7c6e1d7057069a7da64733dc457f34e90cad0ca2dc5553"
+        }
+      ]
+    },
+    {
+      "paper": "seq2seq",
+      "label": "跨页参考文献中的共有作者缩写",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 7,
+            "item": 57,
+            "offset": 4
+          },
+          "end": {
+            "page": 7,
+            "item": 57,
+            "offset": 46
+          },
+          "sha256": "5855ee9f5d8fd82411e706d3ed2673618c9d730d12f78249e94201a7ecb7112e"
+        },
+        {
+          "start": {
+            "page": 8,
+            "item": 2,
+            "offset": 4
+          },
+          "end": {
+            "page": 8,
+            "item": 2,
+            "offset": 46
+          },
+          "sha256": "5855ee9f5d8fd82411e706d3ed2673618c9d730d12f78249e94201a7ecb7112e"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "seq2seq",
+      "label": "后续页的共有词序说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 6,
+            "item": 144,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 144,
+            "offset": 98
+          },
+          "sha256": "d766afddf027acedf33d787a3ac194c0e49cb03556420f6d5c5fcd8614c3603d"
+        },
+        {
+          "start": {
+            "page": 5,
+            "item": 157,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 157,
+            "offset": 98
+          },
+          "sha256": "d766afddf027acedf33d787a3ac194c0e49cb03556420f6d5c5fcd8614c3603d"
+        }
+      ]
+    },
+    {
+      "paper": "seq2seq",
+      "label": "重音符号密集的共有法语样例",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 5,
+            "item": 78,
+            "offset": 0
+          },
+          "end": {
+            "page": 5,
+            "item": 78,
+            "offset": 80
+          },
+          "sha256": "e82f850efc921427ef0a30b9c95c5d0033ef5d5cedf81899412c8a6e6c5cef41"
+        },
+        {
+          "start": {
+            "page": 6,
+            "item": 5,
+            "offset": 0
+          },
+          "end": {
+            "page": 6,
+            "item": 5,
+            "offset": 80
+          },
+          "sha256": "e82f850efc921427ef0a30b9c95c5d0033ef5d5cedf81899412c8a6e6c5cef41"
+        }
+      ]
+    },
+    {
+      "paper": "vgg",
+      "label": "共有的有效感受野说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 1,
+            "item": 151,
+            "offset": 8
+          },
+          "end": {
+            "page": 1,
+            "item": 160,
+            "offset": 24
+          },
+          "sha256": "1f3b050c75e0dc752d8f4f8d9333e205a250210e2dcf3abb57effd96ccf568b1"
+        },
+        {
+          "start": {
+            "page": 2,
+            "item": 232,
+            "offset": 0
+          },
+          "end": {
+            "page": 2,
+            "item": 240,
+            "offset": 24
+          },
+          "sha256": "1f3b050c75e0dc752d8f4f8d9333e205a250210e2dcf3abb57effd96ccf568b1"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "vgg",
+      "label": "共有的图像翻转说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 3,
+            "item": 158,
+            "offset": 37
+          },
+          "end": {
+            "page": 3,
+            "item": 159,
+            "offset": 38
+          },
+          "sha256": "b1716ab02e83a43a9c4eb7aada1547171d0efb29eb49561dd243213643151b79"
+        },
+        {
+          "start": {
+            "page": 4,
+            "item": 60,
+            "offset": 0
+          },
+          "end": {
+            "page": 4,
+            "item": 60,
+            "offset": 102
+          },
+          "sha256": "b1716ab02e83a43a9c4eb7aada1547171d0efb29eb49561dd243213643151b79"
+        }
+      ]
+    },
+    {
+      "paper": "vgg",
+      "label": "结论中的共有表示深度说明",
+      "expect": "unchanged",
+      "sides": [
+        {
+          "start": {
+            "page": 8,
+            "item": 39,
+            "offset": 27
+          },
+          "end": {
+            "page": 8,
+            "item": 39,
+            "offset": 97
+          },
+          "sha256": "4e34ebb1a603f14d559ad978334f3cef4dcda5c409cbb0444e8c9a1a6805c286"
+        },
+        {
+          "start": {
+            "page": 7,
+            "item": 208,
+            "offset": 27
+          },
+          "end": {
+            "page": 7,
+            "item": 208,
+            "offset": 97
+          },
+          "sha256": "4e34ebb1a603f14d559ad978334f3cef4dcda5c409cbb0444e8c9a1a6805c286"
+        }
+      ],
+      "mayMove": true
+    },
+    {
+      "paper": "batchnorm",
+      "label": "真实新增的参考文献作者",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 8,
+            "item": 13,
+            "offset": 0
+          },
+          "end": {
+            "page": 8,
+            "item": 13,
+            "offset": 38
+          },
+          "sha256": "6553f7cd411f57a713369f98d3ae88e9d002ded34190a1623f4bc3da7c9c4bcb"
+        }
+      ]
+    },
+    {
+      "paper": "ddpm",
+      "label": "真实新增的计算资源致谢",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 8,
+            "item": 37,
+            "offset": 20
+          },
+          "end": {
+            "page": 8,
+            "item": 37,
+            "offset": 60
+          },
+          "sha256": "bcc0f99c846149c762720eead6f20d0fff43aa5f617126f843af445db1a63df3"
+        }
+      ]
+    },
+    {
+      "paper": "word2vec",
+      "label": "摘要真实修改的训练动词",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 36,
+            "offset": 45
+          },
+          "end": {
+            "page": 0,
+            "item": 36,
+            "offset": 51
+          },
+          "sha256": "46023b2bfb8ba6dc6fdcfc504c489c17308b078060d10fd3e7d6daeef70c2154"
+        },
+        {
+          "start": {
+            "page": 0,
+            "item": 34,
+            "offset": 25
+          },
+          "end": {
+            "page": 0,
+            "item": 34,
+            "offset": 30
+          },
+          "sha256": "6a8da52e920664ef15b3c36c0edb24e27e6604bb2dc2f6c7c1f1f5076ff28ee9"
+        }
+      ]
+    },
+    {
+      "paper": "seq2seq",
+      "label": "摘要真实删除的性能修饰",
+      "expect": "changed",
+      "sides": [
+        {
+          "start": {
+            "page": 0,
+            "item": 36,
+            "offset": 52
+          },
+          "end": {
+            "page": 0,
+            "item": 36,
+            "offset": 58
+          },
+          "sha256": "eda15ce4834ac303532bc6973df5ff8a5deb75d7dfceb9fc2cdf1bb450a01cf5"
+        },
+        null
+      ]
+    },
+    {
+      "paper": "vgg",
+      "label": "摘要真实新增的小卷积核说明",
+      "expect": "changed",
+      "sides": [
+        null,
+        {
+          "start": {
+            "page": 0,
+            "item": 46,
+            "offset": 54
+          },
+          "end": {
+            "page": 0,
+            "item": 53,
+            "offset": 20
+          },
+          "sha256": "ba7289f69a6ec1f2e36adc4dddb6597a32a0f59016accbf23a9323591462e47b"
+        }
+      ]
+    }
+  ]
+}

@@ -170,7 +170,7 @@ for (const known of [true, false]) {
       await expect(page.locator('#progress')).not.toHaveAttribute('value');
       await expect(page.locator('#busy-detail')).toContainText('Total size unknown');
     }
-    await page.screenshot({ path: `test-results/download-${known ? 'known' : 'unknown'}.png` });
+    await page.screenshot({ path: `tmp/test-results/download-${known ? 'known' : 'unknown'}.png` });
     for (const version of ['v1', 'v7'])
       await page.evaluate(
         ({ version, start, end }) =>

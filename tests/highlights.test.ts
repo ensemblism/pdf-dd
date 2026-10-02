@@ -50,3 +50,15 @@ describe('continuous highlights', () => {
     expect(result[0].height).toBe(27);
   });
 });
+
+it('does not merge highlights across an unchanged mathematical glyph', () => {
+  const input = [rect(10, 20, 10), rect(27, 20, 12)];
+  const unchanged = [rect(21, 22, 4, 7)];
+  expect(joinHighlightLines(input, 0, unchanged)).toEqual(input);
+  expect(joinHighlightLines(input)).toHaveLength(1);
+});
+it('preserves an unchanged glyph between highlights on a rotated page', () => {
+  const input = [rect(100, 10, 8, 10), rect(100, 27, 8, 10)];
+  const unchanged = [rect(101, 21, 6, 4)];
+  expect(joinHighlightLines(input, 90, unchanged)).toEqual(input);
+});

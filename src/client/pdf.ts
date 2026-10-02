@@ -9,10 +9,34 @@ import type {
 } from 'pdfjs-dist/types/src/display/api';
 import workerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import type { Change, Geometry, Page, Rect, Side } from './model';
-import { glyphRanges, positionGlyphs } from './glyphs';
+import { glyphRanges, positionGlyphs, type GlyphRange } from './glyphs';
 import { boundingRect, joinHighlightLines, padHighlight } from './highlights';
 
 GlobalWorkerOptions.workerSrc = workerUrl;
+// A font's ascent is not a glyph's ink bound. TeX radicals can be drawn below
+// their origin; a font-wide box would highlight text on the preceding row.
+export function glyphInk(page: PDFPageProxy) {
+  const context = document.createElement('canvas').getContext('2d')!;
+  const loaded = new Set(
+    [...document.fonts].filter((f) => f.status === 'loaded').map((f) => f.family),
+  );
+  const cache = new Map<string, { ascent: number; descent: number }>();
+  return (name: string, character: string) => {
+    const font = page.commonObjs.get(name);
+    if (!loaded.has(font.loadedName)) return undefined;
+    const key = name + character;
+    if (!cache.has(key)) {
+      context.font = `100px "${font.loadedName}"`;
+      const metrics = context.measureText(character);
+      let ascent = metrics.actualBoundingBoxAscent / 100,
+        descent = metrics.actualBoundingBoxDescent / 100;
+      if (!Number.isFinite(ascent + descent) || ascent + descent <= 0) return undefined;
+      const pad = Math.max(0, 0.3 - ascent - descent) / 2;
+      cache.set(key, { ascent: ascent + pad, descent: descent + pad });
+    }
+    return cache.get(key);
+  };
+}
 export class Document {
   private constructor(
     public name: string,
@@ -47,7 +71,7 @@ export class Document {
       for (let p = 1; p <= pdf.numPages; p++) {
         const page = await pdf.getPage(p),
           viewport = page.getViewport({ scale: 1 });
-        const text = await page.getTextContent();
+        const text = await page.getTextContent({ disableNormalization: true });
         content.push(text);
         const items = text.items
           .filter((item): item is PDFTextItem => 'str' in item)
@@ -74,6 +98,7 @@ export class Document {
               y: Math.min(...ys),
               width: Math.max(...xs) - Math.min(...xs),
               height: Math.max(...ys) - Math.min(...ys),
+              baseline: [t[4], t[5]] as [number, number],
             };
           });
         pages.push({
@@ -98,6 +123,8 @@ export class Document {
 
 export class Locations {
   public geometry: Geometry = { left: {}, right: {} };
+  public issues = new Set<string>();
+  public onIssues = () => {};
   private done = [new Set<number>(), new Set<number>()];
   constructor(
     public docs: [Document, Document],
@@ -121,35 +148,59 @@ export class Locations {
       this.done[side].add(p);
       return;
     }
-    const operators = await page.getOperatorList();
-    const precise = glyphRanges(
-      positionGlyphs(operators, OPS, (name) => page.commonObjs.get(name)),
-      this.docs[side].content[p],
-      wanted,
-      page.getViewport({ scale: 1 }).transform,
-      p,
-    );
+    let precise = new Map<number, GlyphRange[]>();
+    try {
+      const operators = await page.getOperatorList();
+      precise = glyphRanges(
+        positionGlyphs(operators, OPS, (name) => page.commonObjs.get(name), glyphInk(page)),
+        this.docs[side].content[p],
+        new Set(this.docs[side].pages[p].items.map((_, i) => i)),
+        page.getViewport({ scale: 1 }).transform,
+        p,
+      );
+    } catch {
+      // Unsupported drawing operations must still allow TextLayer measurement.
+    }
     const bounds = container.getBoundingClientRect();
     const table = side ? this.geometry.right : this.geometry.left;
+    const items = this.docs[side].content[p].items.filter((t): t is PDFTextItem => 'str' in t);
+    const marked = new Map<number, { start: number; end: number }[]>();
+    for (const change of this.changes)
+      for (const ref of (side ? change.right : change.left).filter((s) => s.page === p)) {
+        const ranges = marked.get(ref.item) ?? [];
+        ranges.push(ref);
+        marked.set(ref.item, ranges);
+      }
+    const unchanged = [...precise].flatMap(([item, glyphs]) =>
+      glyphs.filter(
+        (glyph) => !marked.get(item)?.some((ref) => glyph.end > ref.start && glyph.start < ref.end),
+      ),
+    );
+    let missing = false;
     for (const change of this.changes) {
       const refs = (side ? change.right : change.left).filter((s) => s.page === p),
         rects: Rect[] = [];
       for (const ref of refs) {
+        const item = items[ref.item];
+        if (!item.str.slice(ref.start, ref.end).trim()) continue;
+        const start = rects.length;
         const glyphs = precise.get(ref.item);
         if (glyphs) {
           const rect = boundingRect(glyphs.filter((g) => g.end > ref.start && g.start < ref.end));
-          if (rect) rects.push(rect);
-          continue;
+          if (rect) {
+            rects.push(rect);
+            continue;
+          }
         }
         const element = layer.textDivs[ref.item],
           text = element?.firstChild;
-        if (!text || text.nodeType !== Node.TEXT_NODE) continue;
+        if (!text || text.nodeType !== Node.TEXT_NODE) {
+          missing = true;
+          continue;
+        }
         const range = document.createRange();
         range.setStart(text, Math.min(ref.start, text.textContent!.length));
         range.setEnd(text, Math.min(ref.end, text.textContent!.length));
-        const item = this.docs[side].content[p].items.filter((t): t is PDFTextItem => 'str' in t)[
-          ref.item
-        ];
         const transform = Util.transform(page.getViewport({ scale: 1 }).transform, item.transform);
         const vertical = Math.abs(transform[1]) > Math.abs(transform[0]);
         for (const rect of range.getClientRects())
@@ -161,14 +212,23 @@ export class Locations {
               width: (rect.width * (vertical ? 0.84 : 1)) / scale,
               height: (rect.height * (vertical ? 1 : 0.84)) / scale,
             });
+        if (rects.length === start) missing = true;
       }
       if (refs.length)
         table[change.id] = [
           ...(table[change.id] ?? []).filter((r) => r.page !== p),
-          ...joinHighlightLines(rects, page.rotate).map((rect) => padHighlight(rect, page.rotate)),
+          ...joinHighlightLines(rects, page.rotate, unchanged).map((rect) =>
+            padHighlight(rect, page.rotate),
+          ),
         ];
     }
     this.done[side].add(p);
+    if (missing) {
+      this.issues.add(
+        `${side ? 'Modified' : 'Original'} page ${p + 1}: some text differences could not be highlighted.`,
+      );
+      this.onIssues();
+    }
   }
   async ensureAll(onProgress: (p: number) => void) {
     const work: [Side, number][] = [];
@@ -181,7 +241,6 @@ export class Locations {
       const [side, p] = work[i],
         doc = this.docs[side],
         page = await doc.pdf.getPage(p + 1);
-      await page.getOperatorList();
       const container = document.createElement('div');
       container.className = 'textLayer measurement';
       container.style.setProperty('--scale-factor', '1');

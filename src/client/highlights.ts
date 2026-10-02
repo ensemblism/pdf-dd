@@ -2,7 +2,7 @@ import type { Rect } from './model';
 
 export function padHighlight(rect: Rect, rotation: number): Rect {
   const vertical = rotation % 180 !== 0;
-  const pad = (vertical ? rect.width : rect.height) * 0.02;
+  const pad = (vertical ? rect.width : rect.height) * 0.08;
   return vertical
     ? { ...rect, x: rect.x - pad, width: rect.width + pad * 2 }
     : { ...rect, y: rect.y - pad, height: rect.height + pad * 2 };
@@ -23,7 +23,7 @@ export function boundingRect(rects: Rect[]): Rect | undefined {
 
 // Group by a shared line before ordering along it. Tiny baseline differences
 // must not sort right-hand glyphs before left-hand ones and truncate the union.
-export function joinHighlightLines(rects: Rect[], rotation = 0): Rect[] {
+export function joinHighlightLines(rects: Rect[], rotation = 0, unchanged: Rect[] = []): Rect[] {
   const vertical = rotation % 180 !== 0;
   const start = (r: Rect) => (vertical ? r.y : r.x);
   const length = (r: Rect) => (vertical ? r.height : r.width);
@@ -49,8 +49,22 @@ export function joinHighlightLines(rects: Rect[], rotation = 0): Rect[] {
       const gap = start(rect) - start(current) - length(current);
       // Spans already cover interior spaces. Join adjacent font runs (including
       // inline math), but do not bridge a column gutter or another text line.
-      if (gap <= Math.max(2, Math.min(thickness(current), thickness(rect)) * 0.9))
-        current = boundingRect([current, rect])!;
+      const joined = boundingRect([current, rect])!;
+      const contains = (r: Rect, glyph: Rect) => {
+        const x = glyph.x + glyph.width / 2,
+          y = glyph.y + glyph.height / 2;
+        return (
+          r.page === glyph.page && x >= r.x && x <= r.x + r.width && y >= r.y && y <= r.y + r.height
+        );
+      };
+      const bridgesText = unchanged.some(
+        (glyph) =>
+          contains(padHighlight(joined, rotation), glyph) &&
+          !contains(padHighlight(current, rotation), glyph) &&
+          !contains(padHighlight(rect, rotation), glyph),
+      );
+      if (gap <= Math.max(2, Math.min(thickness(current), thickness(rect)) * 0.9) && !bridgesText)
+        current = joined;
       else {
         result.push(current);
         current = { ...rect };

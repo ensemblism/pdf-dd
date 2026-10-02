@@ -3,6 +3,8 @@ import { SourcePicker, type VersionDownloadProgress } from './sources';
 import { Document, Locations, Reader, type ZoomPoint } from './pdf';
 import type { Comparison, ExportInput, Side } from './model';
 
+const unmappedCharacters = /[\u0000-\u0008\u000b\u000c\u000e-\u001f\u007f\ufffd]/;
+
 const app = document.querySelector<HTMLDivElement>('#app')!;
 const icons = {
   file: '<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6M8 13h8M8 17h5"/>',
@@ -241,6 +243,7 @@ async function run() {
     const start = performance.now();
     result = await compute<Comparison>('compare', { pages: docs.map((d) => d.pages) });
     locations = new Locations(docs, result.changes);
+    locations.onIssues = updateNotice;
     selected = 0;
     filter = 'all';
     $<HTMLSelectElement>('filter').value = 'all';
@@ -288,14 +291,7 @@ async function run() {
       readers[side].onSelect = (id) => selectChange(id, false);
       readers[side].onError = toast;
     }
-    const incomplete = docs.flatMap((d, s) =>
-      d.pages.flatMap((p, i) =>
-        p.items.some((t) => t.str.trim()) ? [] : [`${s ? 'Modified' : 'Original'} ${i + 1}`],
-      ),
-    );
-    $('notice').hidden = !incomplete.length;
-    $('notice').textContent =
-      `Text comparison is incomplete on pages without extractable text: ${incomplete.join(', ')}. OCR is not included.`;
+    updateNotice();
     $('result-screen').dataset.compareMs = String(Math.round(performance.now() - start));
     setView('split');
     renderList();
@@ -306,6 +302,37 @@ async function run() {
     for (const doc of loaded) await doc.destroy();
     docs = null;
   }
+}
+function updateNotice() {
+  if (!docs || !result) return;
+  const empty = docs.flatMap((d, s) =>
+    d.pages.flatMap((p, i) =>
+      p.items.some((t) => t.str.trim()) ? [] : [`${s ? 'Modified' : 'Original'} ${i + 1}`],
+    ),
+  );
+  const messages = [];
+  const unmapped = docs.flatMap((d, s) =>
+    d.pages.flatMap((p, i) =>
+      p.items.some((t) => unmappedCharacters.test(t.str))
+        ? [`${s ? 'Modified' : 'Original'} ${i + 1}`]
+        : [],
+    ),
+  );
+  if (empty.length)
+    messages.push(
+      `Text comparison is incomplete on pages without extractable text: ${empty.join(', ')}. OCR is not included.`,
+    );
+  if (result.coarse)
+    messages.push(
+      'Some changes are shown as whole text blocks because detailed comparison reached its time limit.',
+    );
+  if (unmapped.length)
+    messages.push(
+      `Some characters have unusable text mappings on pages: ${unmapped.join(', ')}. Their visible symbols may compare incorrectly; review these pages.`,
+    );
+  messages.push(...(locations?.issues ?? []));
+  $('notice').hidden = !messages.length;
+  $('notice').textContent = messages.join(' ');
 }
 async function reset() {
   readers?.forEach((r) => r.destroy());
@@ -573,7 +600,7 @@ function renderList(keepScroll = false) {
     empty.textContent = result?.changes.length
       ? 'No changes in this category.'
       : $('notice').hidden
-        ? 'No text differences.\nThese documents contain the same text.'
+        ? 'No text differences found in the extractable text.'
         : 'No text differences found in the readable pages. See the warning above.';
     list.append(empty);
   }
@@ -669,6 +696,15 @@ $('export').onclick = async () => {
       pages: [docs[0].pages, docs[1].pages],
       comparison: result,
       geometry: locations.geometry,
+      incomplete:
+        locations.issues.size > 0 ||
+        docs.some((doc) =>
+          doc.pages.some(
+            (page) =>
+              !page.items.some((item) => item.str.trim()) ||
+              page.items.some((item) => unmappedCharacters.test(item.str)),
+          ),
+        ),
     };
     const bytes = await compute<Uint8Array>('export', { input }, (p) =>
       busy(

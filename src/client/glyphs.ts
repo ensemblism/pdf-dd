@@ -1,5 +1,6 @@
 import type { TextContent, TextItem } from 'pdfjs-dist/types/src/display/api';
 import type { Rect } from './model';
+import { normalizeText } from './text';
 
 type Matrix = number[];
 interface Font {
@@ -11,6 +12,7 @@ interface Font {
 }
 interface Glyph {
   unicode: string;
+  fontChar?: string;
   width: number;
   isSpace?: boolean;
 }
@@ -47,6 +49,7 @@ export function positionGlyphs(
   list: { fnArray: number[]; argsArray: any[][] },
   ops: Record<string, number>,
   fontFor: (name: string) => Font,
+  inkFor?: (font: string, character: string) => { ascent: number; descent: number } | undefined,
 ): Positioned[] {
   let state = {
     ctm: identity(),
@@ -99,15 +102,18 @@ export function positionGlyphs(
       const x = state.x + advance * hscale,
         y = state.y + state.rise;
       if (supported && glyph.unicode && !/^\s+$/.test(glyph.unicode)) {
+        const ink = inkFor?.(state.font, glyph.fontChar ?? glyph.unicode);
+        const top = ink ? ink.ascent * state.size : ascent;
+        const bottom = ink ? -ink.descent * state.size : descent;
         result.push({
           text: glyph.unicode,
           font: state.font,
           origin: point(transform, x, y),
           corners: [
-            [0, descent],
-            [width * hscale, descent],
-            [0, ascent],
-            [width * hscale, ascent],
+            [0, bottom],
+            [width * hscale, bottom],
+            [0, top],
+            [width * hscale, top],
           ].map(([dx, dy]) => point(transform, x + dx, y + dy)),
         });
       }
@@ -202,7 +208,7 @@ export function positionGlyphs(
 const graphemes = new Intl.Segmenter(undefined, { granularity: 'grapheme' });
 function characters(text: string) {
   return [...graphemes.segment(text)].flatMap(({ segment, index }) =>
-    [...segment.normalize('NFKC')]
+    [...normalizeText(segment)]
       .filter((c) => !/^\s$/.test(c))
       .map((char) => ({ char, start: index, end: index + segment.length })),
   );
@@ -235,7 +241,9 @@ export function glyphRanges(
       })
       .filter(
         (g) =>
-          Math.abs(g.y) < Math.max(0.2, height * 0.05) && g.x >= -0.2 && g.x < item.width - 0.05,
+          Math.abs(g.y) < Math.max(0.2, height * 0.05) &&
+          g.x >= -0.2 &&
+          (item.width > 0 ? g.x < item.width - 0.05 : Math.abs(g.x) < 0.2),
       )
       .sort((a, b) => a.x - b.x);
     const source = characters(item.str),

@@ -89,7 +89,7 @@ test('static subpath supports local selection, replacement, drag/drop, navigatio
   expect(requests.some((r) => r.includes('/api/') || r.includes('session.json'))).toBe(false);
   expect(requests.every((r) => r.startsWith(site.url) || /^(blob|data):/.test(r))).toBe(true);
   expect(errors).toEqual([]);
-  await page.screenshot({ path: 'test-results/web-comparison.png' });
+  await page.screenshot({ path: 'tmp/test-results/web-comparison.png' });
   const blank = await page.locator('.brand strong').evaluate((el) => {
     const rect = el.getBoundingClientRect();
     const x = rect.right + 24,
@@ -146,7 +146,7 @@ test('default paper loads two PDFs once, preserves results across sources and re
   await expect(page.locator('.web-pdf-summary')).toContainText('Original · v1');
   await expect(page.locator('.web-pdf-summary')).toContainText('Modified · Latest');
   await expect(page.locator('#revision-timeline')).toHaveCount(0);
-  await page.screenshot({ path: 'test-results/web-arxiv.png' });
+  await page.screenshot({ path: 'tmp/test-results/web-arxiv.png' });
   await page.getByRole('button', { name: 'Local files', exact: true }).click();
   await page.getByRole('button', { name: 'arXiv', exact: true }).click();
   await expect(page.locator('#compare')).toBeEnabled();
@@ -254,7 +254,7 @@ test('editing input aborts in-flight requests; old responses cannot replace a ne
     page.getByRole('progressbar', { name: 'Downloading two PDFs from arXiv…' }),
   ).toBeVisible();
   await expect(page.locator('#source-progress')).not.toHaveAttribute('value');
-  await page.screenshot({ path: 'test-results/web-download-progress.png' });
+  await page.screenshot({ path: 'tmp/test-results/web-download-progress.png' });
   await expect(page.locator('#load-history')).toBeDisabled();
   await expect(page.locator('#compare')).toBeDisabled();
   await page.locator('#source-input').fill('2401.01234v3');

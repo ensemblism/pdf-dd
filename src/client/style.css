@@ -575,10 +575,10 @@ p {
   border-radius: 1px;
 }
 .mark.removed {
-  background: #eb6f6447;
+  background: #eb6f6463;
 }
 .mark.added {
-  background: #39bb854a;
+  background: #39bb8566;
 }
 .mark.moved {
   background: #5f9ded45;
@@ -589,10 +589,10 @@ p {
   z-index: 1;
 }
 .mark.removed.selected {
-  background: #eb6f6470;
+  background: #eb6f6484;
 }
 .mark.added.selected {
-  background: #39bb8570;
+  background: #39bb8584;
 }
 .mark.moved.selected {
   background: #5f9ded70;

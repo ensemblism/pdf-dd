@@ -37,7 +37,7 @@ test('upload, navigate, change views, zoom, export and compare again', async ({ 
   await expect(page.getByText('Local & private')).toHaveCount(0);
   await expect(page.locator('#upload-screen .features')).toHaveCount(0);
   await expect(page.getByRole('button', { name: 'Make a difference!' })).toBeDisabled();
-  await page.screenshot({ path: 'test-results/upload.png' });
+  await page.screenshot({ path: 'tmp/test-results/upload.png' });
   await upload(
     page,
     await pdf('This experiment measures a stable variable.', 3),
@@ -113,7 +113,7 @@ test('upload, navigate, change views, zoom, export and compare again', async ({ 
   const output = await download.path();
   const exported = await PDFDocument.load(await readFile(output!));
   expect(exported.getPageCount()).toBe(3);
-  await download.saveAs('test-results/comparison.pdf');
+  await download.saveAs('tmp/test-results/comparison.pdf');
   await page.locator('#brand').click();
   await expect(page.locator('#header-tagline')).toBeVisible();
   await expect(page.locator('#sync')).toBeHidden();
@@ -150,17 +150,17 @@ test('real 14-page papers render and export with bounded canvas cache', async ({
   await expect(page.locator('#busy')).toBeHidden({ timeout: 60000 });
   await expect(page.locator('#reader-0 .rendered').first()).toBeVisible();
   await expect(page.locator('#reader-1 .rendered').first()).toBeVisible();
-  await page.screenshot({ path: 'test-results/papers.png' });
+  await page.screenshot({ path: 'tmp/test-results/papers.png' });
   expect(await page.locator('.change-card').count()).toBeGreaterThan(0);
   await page.locator('#page-0').fill('7');
   await page.locator('#page-0').press('Enter');
   await expect(page.locator('#reader-0 .paper[data-page="7"].rendered')).toBeVisible();
-  await page.screenshot({ path: 'test-results/papers-page7.png' });
+  await page.screenshot({ path: 'tmp/test-results/papers-page7.png' });
   expect(await page.locator('.paper canvas').count()).toBeLessThanOrEqual(12);
   const downloadPromise = page.waitForEvent('download');
   await page.locator('#export').click();
   const download = await downloadPromise;
-  await download.saveAs('test-results/papers-comparison.pdf');
+  await download.saveAs('tmp/test-results/papers-comparison.pdf');
   const exported = await PDFDocument.load(await readFile((await download.path())!));
   expect(exported.getPageCount()).toBeGreaterThanOrEqual(14);
   console.log(
@@ -192,7 +192,7 @@ test('moved paragraphs link their source and target pages', async ({ page }) => 
   await page.getByRole('button', { name: 'Go to target ↗', exact: true }).click();
   await expect(page.locator('#page-1')).toHaveValue('2');
   await expect(page.locator('#reader-1 .mark.moved.selected').first()).toBeVisible();
-  await page.screenshot({ path: 'test-results/moved.png' });
+  await page.screenshot({ path: 'tmp/test-results/moved.png' });
 });
 test('difference navigation stays fixed across one, two and three digit positions', async ({
   page,
@@ -432,7 +432,7 @@ test('paper highlights follow PDF glyph positions for es and an without borders'
     expect(geometry.border).toBe('0px');
     expect(geometry.outline).toBe('0px');
   }
-  await page.screenshot({ path: 'test-results/corrected-highlights.png' });
+  await page.screenshot({ path: 'tmp/test-results/corrected-highlights.png' });
 });
 test('the complete added sentence stays highlighted across spaces and inline math', async ({
   page,
@@ -496,7 +496,7 @@ test('the complete added sentence stays highlighted across spaces and inline mat
   await card.click();
   await expect(page.locator('#reader-1 .paper[data-page="6"].rendered')).toBeVisible();
   await expect(marks).toHaveCount(3);
-  await page.screenshot({ path: 'test-results/full-sentence.png' });
+  await page.screenshot({ path: 'tmp/test-results/full-sentence.png' });
 });
 test('rotated pages, drag-and-drop, and pages without a text layer', async ({ page }) => {
   await page.goto(url);
@@ -517,10 +517,10 @@ test('rotated pages, drag-and-drop, and pages without a text layer', async ({ pa
   await page.locator('#compare').click();
   await expect(page.locator('#busy')).toBeHidden();
   await expect(page.locator('#reader-0 .rendered').first()).toBeVisible();
-  await page.screenshot({ path: 'test-results/rotated.png' });
+  await page.screenshot({ path: 'tmp/test-results/rotated.png' });
   const downloadPromise = page.waitForEvent('download');
   await page.locator('#export').click();
-  await (await downloadPromise).saveAs('test-results/rotated-comparison.pdf');
+  await (await downloadPromise).saveAs('tmp/test-results/rotated-comparison.pdf');
   await page.locator('#brand').click();
   const blank = await PDFDocument.create();
   blank
@@ -626,7 +626,7 @@ test('arXiv versions feed the existing comparison and keep the chosen order', as
   await expect(page.getByLabel('Original version')).toHaveValue('v2');
   await page.getByRole('radio', { name: 'Original v1', exact: true }).check();
   await expect(page.getByLabel('Original version')).toHaveValue('v1');
-  await page.screenshot({ path: 'test-results/arxiv-source.png' });
+  await page.screenshot({ path: 'tmp/test-results/arxiv-source.png' });
   await page.locator('#compare').click();
   await expect(page.locator('#busy')).toBeHidden();
   await expect(page.locator('#reader-0 .rendered').first()).toBeVisible();
@@ -714,7 +714,7 @@ test('real Git timeline selects historical and working PDFs without checkout', a
     await page.locator('#revision-timeline').evaluate((e) => {
       e.scrollTop = 0;
     });
-    await page.screenshot({ path: 'test-results/git-source.png' });
+    await page.screenshot({ path: 'tmp/test-results/git-source.png' });
     await page.locator('#compare').click();
     await expect(page.locator('#busy')).toBeHidden();
     await expect(page.locator('#reader-0 .rendered').first()).toBeVisible();

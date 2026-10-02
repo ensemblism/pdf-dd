@@ -27,6 +27,19 @@ export async function exportComparison(
       font,
       color: rgb(0.25, 0.3, 0.3),
     });
+    if (input.incomplete || comparison.coarse)
+      sheet.drawText(
+        input.incomplete
+          ? 'Text comparison is incomplete; some text or highlights could not be recovered.'
+          : 'Some changes are shown as whole text blocks because detailed comparison timed out.',
+        {
+          x: pad,
+          y: h + pad + 5,
+          size: 8,
+          font,
+          color: rgb(0.65, 0.25, 0.15),
+        },
+      );
     for (const side of [0, 1] as const) {
       const p = pair[side],
         x = pad + (side ? widths[0] + gap : 0),
@@ -43,12 +56,15 @@ export async function exportComparison(
       }
       const page = pages[side][p],
         source = sources[side].getPage(p);
-      const [left, bottom, right, top] = page.view;
-      const embedded = await out.embedPage(source, { left, bottom, right, top });
-      const rotation = ((page.rotation % 360) + 360) % 360;
-      const dx = rotation === 180 || rotation === 270 ? page.width : 0;
-      const dy = rotation === 90 || rotation === 180 ? page.height : 0;
-      sheet.drawPage(embedded, { x: x + dx, y: y + dy, rotate: degrees(-rotation) });
+      // A genuinely blank PDF page has no content stream to embed.
+      if (source.node.Contents()) {
+        const [left, bottom, right, top] = page.view;
+        const embedded = await out.embedPage(source, { left, bottom, right, top });
+        const rotation = ((page.rotation % 360) + 360) % 360;
+        const dx = rotation === 180 || rotation === 270 ? page.width : 0;
+        const dy = rotation === 90 || rotation === 180 ? page.height : 0;
+        sheet.drawPage(embedded, { x: x + dx, y: y + dy, rotate: degrees(-rotation) });
+      }
       sheet.drawText(`${side ? 'Modified' : 'Original'} - page ${p + 1}`, {
         x,
         y: 7,
@@ -72,7 +88,7 @@ export async function exportComparison(
             width: rect.width,
             height: rect.height,
             color,
-            opacity: 0.23,
+            opacity: change.kind === 'moved' ? 0.23 : 0.31,
           });
           if (change.kind === 'moved' && !labelDrawn) {
             sheet.drawText(`M${change.id}`, {

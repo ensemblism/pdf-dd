@@ -276,7 +276,7 @@ test('Git typed paths, the system picker and dropped files all record the return
   await page.getByRole('button', { name: 'Recent paths', exact: true }).click();
   await expect(entries(page)).toHaveCount(1);
   await expect(entries(page).first()).toHaveAttribute('title', path);
-  await page.screenshot({ path: 'test-results/recent-git.png' });
+  await page.screenshot({ path: 'tmp/test-results/recent-git.png' });
   await entries(page).first().click();
   await expect(page.locator('#compare')).toBeDisabled();
   expect(requests).toHaveLength(3);
@@ -319,7 +319,7 @@ test('many recent entries scroll inside the popup and support Home, End and Tab'
   await expect(entries(page).first()).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.locator('[data-recent-remove]').first()).toBeFocused();
-  await page.screenshot({ path: 'test-results/recent-arxiv.png' });
+  await page.screenshot({ path: 'tmp/test-results/recent-arxiv.png' });
 });
 
 test('browser and server restarts at the same address preserve only recent source metadata', async () => {
